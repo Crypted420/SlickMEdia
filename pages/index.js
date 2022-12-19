@@ -50,7 +50,7 @@ export default function Main(props) {
 
   const handleSearch = async () => {
     setStartSearch(prev => !prev);
-    const getSearch = await fetch(`http://omdbapi.com/?i=tt3896198&apikey=7828c8c9&s=${input}&page=10`);
+    const getSearch = await fetch(`https://omdbapi.com/?i=tt3896198&apikey=7828c8c9&s=${input}&page=10`);
     const result = await getSearch.json();
     setSearchResult(result.Search)
   }
