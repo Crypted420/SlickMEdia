@@ -50,7 +50,7 @@ export default function Main(props) {
 
   const handleSearch = async () => {
     setStartSearch(prev => !prev);
-    const getSearch = await fetch('http://omdbapi.com/?i=tt3896198&apikey=7828c8c9&s=maze&page=10');
+    const getSearch = await fetch(`http://omdbapi.com/?i=tt3896198&apikey=7828c8c9&s=${input}&page=10`);
     const result = await getSearch.json();
     setSearchResult(result.Search)
   }
@@ -106,8 +106,13 @@ export default function Main(props) {
       {
         startSearch &&
         <SearchResult>
-          {/* <h3>Search Results</h3> */}
-          {createSearchElement}
+          <h3>Search Results
+            <span onClick={() => setStartSearch(prev => !prev)}>Go back</span>
+          </h3>
+
+          <div className='result--container'>
+            {createSearchElement}
+          </div>
         </SearchResult>
       }
     </Container>
@@ -246,21 +251,30 @@ const SearchResult = styled.section`
   width: 100%;
   height:auto;
   padding: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  .container{
+  span{
+    display: inline;
+    float: right;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .result--container{
+    margin-top: 2rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    color: white;
-    margin: .5rem;
-    width: 15rem;
-    height: 20rem;
-    background-color: black;
-    p{
-      text-align: center;
+    .container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin: .5rem;
+      width: 15rem;
+      height: 20rem;
+      background-color: black;
+      p{
+        text-align: center;
+      }
     }
   }
 `
