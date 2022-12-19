@@ -25,7 +25,7 @@ export default function Main(props) {
 
   const action_moviesElement = action_movies.Search.map(result => {
     return (
-      <div className="movie">
+      <div className="movie" key={result.Title}>
         <div className='poster--container' style={{ background: `url(${result.Poster})` }}>
           <p>{result.Title}</p>
         </div>
@@ -35,7 +35,7 @@ export default function Main(props) {
 
   const comedy_moviesElement = comedy_movies.Search.map(result => {
     return (
-      <div className="movie">
+      <div className="movie" key={result.Title}>
         <div className='poster--container' style={{ background: `url(${result.Poster})` }}>
           <p>{result.Title}</p>
         </div>
@@ -56,7 +56,7 @@ export default function Main(props) {
   }
   const createSearchElement = searchResult.map(result => {
     return (
-      <div className="container">
+      <div className="container" key={result.Title}>
         <p>{result.Title}</p>
       </div>
     )
@@ -125,7 +125,7 @@ const Container = styled.div`
 const Header = styled.header`
   width: 100%;
   height:22vh;
-  background-color: black;
+  background-color: #292929;
   display: flex;
   align-items: center;
   padding-left:5.875rem;
